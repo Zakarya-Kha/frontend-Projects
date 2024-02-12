@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor-Network</title>
+  <!-- <link rel="stylesheet" href="style.css1"> -->
+  <!-- <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" /> -->
+  <!-- <script src="https://kit.fontawesom.com/a076d05399.js"></script> -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/9.7.0/simpleicons.svg"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<style>
+
+</style>
+
+<body>
+  
+  <header class="header">
+    <a href="#" class="logo"> <i class="fas fa-heartbeat"></i>MadiCare</a>
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+    <nav class="navbar">
+        <a href="/"><i class="fas fa-home"></i>Home</a>
+        <a href="#services">services</a>
+        <a href="#about">about</a>
+        <a href="{{ url_for('department') }}">Department</a>
+        <a href="{{ url_for('booking') }}">book</a>
+        <a href="{{ url_for('review') }}">review</a>
+        <a href="{{ url_for('blogs') }}">blogs</a>
+      </nav>
+      <!-- <div id="profile" class="fas fa-user"></div>
+
+    <nav class="navbar1">
+       <div class="image">
+        <img src="{{ url_for('static', filename='image/doctor1.png') }}" alt="Profile Image">
+       </div> 
+        <h1>Welcome, {{ name }}</h1>
+        <p>number: {{ number }}</p>
+        <p>Email: {{ email }}</p>
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+          <input type="file" name="profile_image">
+          <button type="submit">Upload Image</button>
+      </form>
+        
+        <a href="/edit_profile">Edit Profile</a>
+      </nav> -->
+      <!-- <a href="/logout">Logout</a> -->
+</header>
+
+  <!-- body contains here =================================================== -->
+{% block body %}  {% endblock %}
+
+
+
+
+
+
+
+
+
+    <!-- footer section start here  -->
+    <section class="footer">
+
+        <div class="box-container">
+    
+          <div class="box">
+            <h3>quick-links</h3>
+            <a href="/"><i class="fas fa-chevron-right"></i> home</a>
+            <a href="#services"><i class="fas fa-chevron-right"></i> services</a>
+            <a href="#about"><i class="fas fa-chevron-right"></i> about</a>
+            <a href="#department"><i class="fas fa-chevron-right"></i> department</a>
+            <a href="{{ url_for('booking') }}"><i class="fas fa-chevron-right"></i> book</a>
+            <a href="#review"><i class="fas fa-chevron-right"></i> review</a>
+            <a href="{{ url_for('blogs') }}"><i class="fas fa-chevron-right"></i> blogs</a>
+          </div>
+    
+    
+    
+          <div class="box">
+            <h3>our-services</h3>
+            <a href="#"><i class="fas fa-chevron-right"></i> dintal care</a>
+            <a href="#"><i class="fas fa-chevron-right"></i> message therapy</a>
+            <a href="#"><i class="fas fa-chevron-right"></i> cardioligy</a>
+            <a href="#"><i class="fas fa-chevron-right"></i> disgnosis</a>
+            <a href="#"><i class="fas fa-chevron-right"></i> ambulance services</a>
+          </div>
+    
+    
+    
+          <div class="box">
+            <h3>Contact info</h3>
+            <a href="#"><i class="fas fa-phone"></i> +123-456-7890</a>
+            <a href="#"><i class="fas fa-phone"></i> +122-332-8709</a>
+            <a href="#"><i class="fas fa-envelope"></i> arsalankhan@gmail.com</a>
+            <a href="#"><i class="fas fa-envelope"></i> arsalankhan@gmail.com</a>
+            <a href="#"><i class="fas fa-map-marker-alt"></i> kpk pakistan - 23434</a>
+          </div>
+    
+    
+          <div class="box">
+            <h3>Contact folow us</h3>
+            <a href="#"><i class="fab fa-facebook-f"></i> facebook</a>
+            <a href="#"><i class="fab fa-youtube"></i> youtube</a>
+            <a href="#"><i class="fab fa-instagram"></i> instagram</a>
+            <a href="#"><i class="fab fa-linkedin"></i> linkedin</a>
+            <a href="#"><i class="fab fa-twitter"></i> twitter</a>
+          </div>
+    
+    
+        </div>
+        <div class="cradit">Created By Anni<span>Patan</span> | All Rights Reserved</div>
+      </section>
+    
+    
+    
+      <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+      <script src="script.js"></script>
+    </body>
+    
+    </html>

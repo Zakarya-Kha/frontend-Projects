@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+
+/* Reset some default styles */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+/* Header styles */
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+/* Menu styles */
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.menu-item {
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    flex-basis: calc(33.33% - 20px);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+}
+
+.menu-item-img img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.menu-item h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.menu-item p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.menu-item-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+.orderButton {
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.orderButton:hover {
+    background-color: #ff4500;
+}
+
+/* Cart styles */
+.cart {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.cart h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#cart-items li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+#cart-total {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+#checkoutButton {
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 10px;
+}
+
+#checkoutButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#checkoutButton:hover {
+    background-color: #ff4500;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to our menu page!</h1>
+        <p>[Your Company Name]<br> we offer a wide range of delicious meals that are sure to satisfy your cravings.<br>
+            Our menu is carefully crafted to include a variety of options that cater to different tastes and dietary
+            preferences <br>Thank you for choosing [Your Company Name]. <br>We are proud to offer a diverse and
+            delicious menu that is sure to delight your taste buds.<br> Browse our menu below and place your order
+            today!</p>
+        <button class="orderButton sm-btn">Order Now</button>
+    </div>
+
+    <div>
+        <h1>Our Menu</h1>
+    </div>
+
+    <main>
+        <!-- You can keep the existing menu structure here -->
+        <!-- ... (menu items) ... -->
+    </main>
+
+    <div id="cart" class="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items">
+            <!-- Cart items will be added here using JavaScript -->
+        </ul>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+        <button id="checkoutButton" class="orderButton">Checkout</button>
+    </div>
+
+    <script>
+
+// Define menu item data (you can load this dynamically from a server)
+const menuItems = [
+    // Define your menu items with properties like name, price, and image URL
+    // Example: { name: "Veg Biryani", price: 7.99, image: "images/bn5.jpg" },
+    // ...
+];
+
+// Initialize cart data
+const cart = [];
+
+// Function to render menu items
+function renderMenu() {
+    const menuContainer = document.querySelector("main .menu");
+
+    menuItems.forEach((item, index) => {
+        const menuItem = document.createElement("div");
+        menuItem.className = "menu-item";
+        menuItem.innerHTML = `
+            <div class="menu-item-img">
+                <img src="${item.image}" alt="${item.name}">
+            </div>
+            <div class="menu-item-info">
+                <h2>${item.name}</h2>
+                <p>${item.description}</p>
+                <p class="menu-item-price">$${item.price.toFixed(2)}</p>
+                <button class="orderButton sm-btn" onclick="addToCart(${index})">Add to Cart</button>
+            </div>
+        `;
+        menuContainer.appendChild(menuItem);
+    });
+}
+
+// Function to add an item to the cart
+function addToCart(index) {
+    const selectedItem = menuItems[index];
+    cart.push(selectedItem);
+    updateCart();
+}
+
+// Function to update the cart display
+function updateCart() {
+    const cartContainer = document.getElementById("cart");
+    const cartItemsList = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+
+    cartItemsList.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item) => {
+        const cartItem = document.createElement("li");
+        cartItem.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+        cartItemsList.appendChild(cartItem);
+        total += item.price;
+    });
+
+    cartTotal.textContent = total.toFixed(2);
+
+    // Enable or disable the checkout button based on cart items
+    const checkoutButton = document.getElementById("checkoutButton");
+    checkoutButton.disabled = cart.length === 0;
+}
+
+// Initialize the menu and cart
+renderMenu();
+updateCart();
+
+
+    </script>
+</body>
+</html>

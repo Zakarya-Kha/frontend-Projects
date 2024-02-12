@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<title>About Us - Food Order Website</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+		}
+
+		/* navbar strt */
+
+		nav {
+			position: fixed;
+			width: 100%;
+			top: 0;
+			left: 0;
+			background-color: #ff9800;
+			box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+			z-index: 100;
+		}
+
+		.navbar-container {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 10px 30px;
+		}
+
+		.navbar-brand img {
+			height: 50px;
+			border-radius: 60%;
+		}
+
+		.navbar-menu {
+			display: flex;
+			align-items: center;
+			list-style: none;
+		}
+
+		.navbar-item {
+			margin-right: 20px;
+		}
+
+		.navbar-item a {
+			color: whitesmoke;
+			text-decoration: none;
+			font-weight: bold;
+			transition: all 0.2s ease;
+		}
+
+		.navbar-item a:hover {
+			color: #ff4455;
+		}
+
+		.navbar-hamburger {
+			display: none;
+			cursor: pointer;
+		}
+
+		.navbar-hamburger div {
+			width: 25px;
+			height: 2px;
+			margin: 3px;
+			background-color: #333;
+			transition: all 0.3s ease;
+		}
+
+
+		nav ul li a.active {
+			/* background-color: #723b3b; */
+			color: aqua;
+		}
+
+
+		@media (max-width: 768px) {
+			.navbar-menu {
+				display: none;
+				position: absolute;
+				top: 50px;
+				left: 0;
+				width: 100%;
+				padding: 10px;
+				box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+				background-color: #ff9800;
+				z-index: 99;
+			}
+
+			.navbar-menu.show {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.navbar-item {
+				display: block;
+				margin: 10px 0;
+			}
+
+			.navbar-hamburger {
+				display: block;
+			}
+
+			.active-menu .navbar-hamburger div:nth-child(2) {
+				opacity: 0;
+			}
+
+			.active-menu .navbar-hamburger div:nth-child(1) {
+				transform: rotate(45deg) translate(5px, 5px);
+			}
+
+			.active-menu .navbar-hamburger div:nth-child(3) {
+				transform: rotate(-45deg) translate(5px, -5px);
+			}
+		}
+
+		/* navbar end */
+
+
+		/* manin strt */
+
+		main {
+			padding-top: 120px;
+			text-align: center;
+		}
+
+		section {
+			margin: 40px auto;
+			margin-top: 0px;
+			margin-bottom: 18px;
+		}
+
+		section h1 {
+			margin-bottom: 40px;
+
+		}
+
+		section h2 {
+			margin-top: -30px;
+			font-size: 2.5rem;
+		}
+
+		section p {
+			margin-bottom: 50px;
+			color: black;
+		}
+
+		/* main end */
+
+		/* container strt */
+
+		.container {
+			height: 450px;
+			max-width: 2000px;
+			margin: 0 auto;
+			padding: 20px;
+			text-align: center;
+			margin-top: 70px;
+			background: url("/images/bg1.jpg") no-repeat center center fixed;
+			background-size: cover;
+		}
+
+		h1 {
+			font-size: 36px;
+			color: rgb(7, 233, 158);
+			margin-bottom: 20px;
+			margin-top: 50px;
+		}
+
+		p {
+			font-size: 18px;
+			line-height: 1.5;
+			color: #fff;
+			margin-bottom: 30px;
+		}
+
+		button.sm-btn {
+			background-color: rgb(77, 197, 157);
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		button.sm-btn:hover {
+			background-color: #F44336;
+		}
+
+		@media only screen and (max-width: 600px) {
+			h1 {
+				font-size: 24px;
+			}
+
+			p {
+				font-size: 16px;
+			}
+
+			button.sm-btn {
+				padding: 8px 16px;
+				font-size: 14px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.container {
+				height: auto;
+				padding: 50px 20px;
+
+			}
+
+			.container h1 {
+				font-size: 36px;
+				padding-top: 0;
+			}
+
+			.container p {
+				font-size: 16px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.container {
+				height: auto;
+				padding: 50px 20px;
+			}
+
+			.container h1 {
+				font-size: 28px;
+			}
+
+			.container p {
+				font-size: 14px;
+			}
+
+			.container button {
+				padding: 8px 16px;
+				font-size: 14px;
+			}
+		}
+
+		/* container end */
+
+		@media screen and (max-width: 767px) {
+			/* nav {
+		display: none;
+	} */
+
+			header {
+				padding: 10px;
+			}
+
+			h1 {
+				margin-top: 40px;
+			}
+
+			main {
+				padding-top: 80px;
+			}
+
+			section {
+				margin: 20px auto;
+			}
+		}
+
+
+
+		/* Footer */
+		footer {
+			background-color: #997949;
+			color: #fff;
+			padding: 50px 0;
+			font-size: 16px;
+
+		}
+
+		footer h4 {
+			color: #fff;
+			text-align: center;
+			margin-bottom: 20px;
+			margin-top: 15px;
+		}
+
+		footer p {
+			color: #ccc;
+			text-align: center;
+			/* margin-top: 20px; */
+		}
+
+		.footer .social-icons {
+			text-align: center;
+		}
+
+		.social-icons li {
+			display: inline-block;
+			margin-right: 10px;
+
+		}
+
+		.social-icons li:last-child {
+			margin-right: 15px;
+		}
+
+
+		.social-icons a {
+			display: block;
+			width: 30px;
+			height: 30px;
+			background-color: #fff;
+			color: #333;
+			text-align: center;
+			line-height: 30px;
+			border-radius: 50%;
+
+		}
+
+		.social-icons a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+
+		/* footer end */
+	</style>
+</head>
+
+<body>
+
+	<!-- navbar strt -->
+
+	<nav class="navbar">
+		<div class="navbar-container">
+			<div class="navbar-brand">
+				<a href="#"><img src="/images/logo2.png" alt="Logo"></a>
+			</div>
+			<ul class="navbar-menu">
+				<li class="navbar-item"><a href="index.html">Home</a></li>
+				<li class="navbar-item"><a href="menu.html">Menu</a></li>
+				<li class="navbar-item"><a href="about.html" class="active">About </a></li>
+				<li class="navbar-item"><a href="contact.html">Contact</a></li>
+				<li class="navbar-item"><a href="order.html">Order</a></li>
+				<li class="navbar-item"><a href="registration.html">Registration</a></li>
+				<li class="navbar-item"><a href="login.html">Login</a></li>
+			</ul>
+			<div class="navbar-hamburger">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- nabar end  -->
+
+	<!-- container strt -->
+
+	<div class="container">
+		<h1>Welcome to our About page!</h1>
+		<p>Welcome to <b>Name of your website</b> <br> Discover delicious meals from your favorite local restaurants,
+			all in one place. With our easy-to-use platform, you can browse menus, order online, and have your food
+			delivered straight to your doorstep.<br>Whether you're craving pizza, sushi, burgers, or something else
+			entirely, we've got you covered. Our restaurant partners offer a wide range of cuisines and dishes, so
+			there's something for everyone.<br>Plus, our user-friendly website makes it easy to search for restaurants,
+			place orders, and track your delivery in real-time. </p>
+		<button class="sm-btn">Order Now</button>
+
+	</div>
+
+	<!-- container end -->
+
+	<!-- main strt -->
+
+	<main>
+		<section>
+			<h2><b>About Us</b></h2>
+
+			<p>
+				Welcome to [Name of your website], your go-to platform for convenient and hassle-free food ordering. Our
+				mission is to make it easier for you to enjoy your favorite dishes from the best restaurants in town,
+				right from the comfort of your own home or office.
+				<br>
+				Our team is passionate about good food and believes that everyone deserves to have access to delicious
+				meals, no matter how busy their schedules are. That's why we've created a user-friendly website that
+				lets you browse through menus, order food, and pay securely, all with just a few clicks.
+				<br>
+				We partner with the best restaurants in your area to offer you a wide selection of dishes that cater to
+				different tastes, budgets, and dietary preferences. Our platform also features real-time tracking, so
+				you can monitor the status of your order from the moment it's placed until it arrives at your doorstep.
+				<br>
+				Our commitment to customer satisfaction is what sets us apart. We pride ourselves on providing excellent
+				service, from fast and reliable delivery to attentive customer support. Our team is always ready to
+				assist you with any questions or concerns you may have.
+				<br>
+				Thank you for choosing [Name of your website]. We hope to exceed your expectations and provide you with
+				a memorable food ordering experience.
+				<br>
+				At [Name of your website], we believe that food is more than just fuel for the body - it's a way of
+				life. That's why we've made it our mission to bring you the best food from the most popular restaurants
+				in your area, so you can indulge in your favorite dishes whenever you want.
+				<br>
+				Our platform is designed with you in mind. We understand that everyone has different tastes and dietary
+				requirements, which is why we offer a variety of cuisines and options to suit your needs. Whether you're
+				looking for a healthy meal, a quick snack, or a special treat, we've got you covered.
+				<br>
+				We also believe in supporting local businesses and communities. By partnering with local restaurants,
+				we're able to promote small businesses and contribute to the local economy. At the same time, we're able
+				to offer you a wider selection of quality food options to choose from.
+				<br>
+				Our team is dedicated to making your food ordering experience as smooth and convenient as possible. From
+				our easy-to-use website to our fast and reliable delivery service, we're committed to ensuring that you
+				get the best service every time you order from us.
+
+				Thank you for choosing [Name of your website] as your food ordering platform. We look forward to serving
+				you and providing you with the best food and service in town.
+			</p>
+
+		</section>
+	</main>
+
+	<!-- main end -->
+
+
+	<!-- footer end -->
+
+	<footer>
+		<div class="footer">
+			<div class="row">
+				<div class="col-md-4">
+					<h4>About Us</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat enim quis massa sagittis
+						vestibulum. Suspendisse potenti. Nullam euismod purus vel neque tincidunt, non malesuada tortor
+						gravida. </p>
+				</div>
+				<div class="col-md-4">
+					<h4>Contact Us</h4>
+					<p>Pakistan,KPK<br>
+						Swabi,Turlandi<br>
+						Email: Zakaryakhankpk1@gmail.com<br>
+						Phone: (+92) 3161942996</p>
+				</div>
+				<div class="col-md-4">
+					<h4>Follow Us</h4>
+					<ul class="social-icons">
+						<li><a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></i></a></li>
+						<li><a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></i></a></li>
+						<li><a href="https://www.youtube.com"><i class="fa-brands fa-youtube"></i></i></a></li>
+						<li><a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- footer end -->
+
+	<script>
+
+		// hamburger code
+		const navbarMenu = document.querySelector(".navbar-menu");
+		const navbarHamburger = document.querySelector(".navbar-hamburger");
+
+		navbarHamburger.addEventListener("click", () => {
+			navbarMenu.classList.toggle("show");
+			navbarHamburger.classList.toggle("active-menu");
+		});
+
+		// js code for footer
+
+
+		const socialIcons = document.querySelectorAll('.social-icons a');
+
+		socialIcons.forEach(icon => {
+			icon.addEventListener('click', e => {
+				e.preventDefault();
+				const href = icon.getAttribute('href');
+				window.open(href, '_blank');
+			});
+		});
+
+
+	</script>
+</body>
+
+</html>

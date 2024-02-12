@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<title>Menu</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+		}
+
+		nav {
+			position: fixed;
+			width: 100%;
+			top: 0;
+			left: 0;
+			background-color: #ff9800;
+			box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+			z-index: 100;
+		}
+
+		/* navbar strt */
+
+		.navbar-container {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 10px 30px;
+		}
+
+		.navbar-brand img {
+			height: 50px;
+			border-radius: 60%;
+		}
+
+		.navbar-menu {
+			display: flex;
+			align-items: center;
+			list-style: none;
+		}
+
+		.navbar-item {
+			margin-right: 20px;
+		}
+
+		.navbar-item a {
+			color: whitesmoke;
+			text-decoration: none;
+			font-weight: bold;
+			transition: all 0.2s ease;
+		}
+
+		.navbar-item a:hover {
+			color: #ff4455;
+		}
+
+		.navbar-hamburger {
+			display: none;
+			cursor: pointer;
+		}
+
+		.navbar-hamburger div {
+			width: 25px;
+			height: 2px;
+			margin: 3px;
+			background-color: #333;
+			transition: all 0.3s ease;
+		}
+
+		nav ul li a.active {
+			/* background-color: #723b3b; */
+			color: aqua;
+		}
+
+
+
+		@media (max-width: 768px) {
+			.navbar-menu {
+				display: none;
+				position: absolute;
+				top: 50px;
+				left: 0;
+				width: 100%;
+				padding: 10px;
+				box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+				background-color: #ff9800;
+				z-index: 99;
+			}
+
+			.navbar-menu.show {
+				display: flex;
+				flex-direction: column;
+				margin-top: 18px;
+			}
+
+			.navbar-item {
+				display: block;
+				margin: 10px 0;
+			}
+
+			.navbar-hamburger {
+				display: block;
+			}
+
+			.active-menu .navbar-hamburger div:nth-child(2) {
+				opacity: 0;
+			}
+
+			.active-menu .navbar-hamburger div:nth-child(1) {
+				transform: rotate(45deg) translate(5px, 5px);
+			}
+
+			.active-menu .navbar-hamburger div:nth-child(3) {
+				transform: rotate(-45deg) translate(5px, -5px);
+			}
+		}
+
+		/* nvbar end */
+
+		/* container strt */
+
+		.container {
+			background-color: #ff4500;
+			height: 450px;
+			width: 100%;
+			justify-content: center;
+			text-align: center;
+			margin-top: 30px;
+			position: relative;
+			background: url("/images/bg.jpg") no-repeat center center fixed;
+			background-size: cover
+		}
+
+		.container h1 {
+			font-size: 48px;
+			margin-bottom: 30px;
+			padding-top: 90px;
+			color: #fff;
+			color: rgb(7, 233, 158);
+
+		}
+
+		.container p {
+			color: #ccc;
+		}
+
+		h1 {
+			margin-top: 70px;
+			margin-bottom: 30px;
+			text-align: center;
+		}
+
+		button.sm-btn {
+			background-color: rgb(77, 197, 157);
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		button.sm-btn:hover {
+			background-color: #F44336;
+		}
+
+		@media only screen and (max-width: 600px) {
+			h1 {
+				font-size: 24px;
+			}
+
+			p {
+				font-size: 16px;
+			}
+
+			button.sm-btn {
+				padding: 8px 16px;
+				font-size: 14px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.container {
+				height: auto;
+				padding: 50px 20px;
+
+			}
+
+			.container h1 {
+				font-size: 36px;
+				padding-top: 0;
+			}
+
+			.container p {
+				font-size: 16px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.container {
+				height: auto;
+				padding: 50px 20px;
+			}
+
+			.container h1 {
+				font-size: 28px;
+			}
+
+			.container p {
+				font-size: 14px;
+			}
+
+			.container button {
+				padding: 8px 16px;
+				font-size: 14px;
+			}
+		}
+
+
+		/* container end */
+
+
+		/* main section strt */
+
+		.hero-text-container {
+			text-align: center;
+			color: #fff;
+			margin-top: 75px;
+		}
+
+		.hero-text-container h1 {
+			font-size: 48px;
+			margin-bottom: 20px;
+			background-color: #333;
+		}
+
+		.hero-text-container h2 {
+			background-color: #333;
+		}
+
+		.menu {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding: 50px 20px;
+		}
+
+		.menu-item {
+			width: calc(33.33% - 20px);
+			margin-bottom: 40px;
+			display: flex;
+			flex-direction: column;
+			background-color: #fff;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+		}
+
+		.menu-item:hover {
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+			transform: translateY(-5px);
+		}
+
+		.menu-item-img {
+			width: 100%;
+			height: 240px;
+			overflow: hidden;
+			border-radius: 10px 10px 0 0;
+		}
+
+		.menu-item-img img {
+			width: 100%;
+			height: 250px;
+			object-fit: cover;
+		}
+
+		.menu-item-info {
+			padding: 20px;
+		}
+
+		.menu-item-info h2 {
+			font-size: 24px;
+			margin-bottom: 10px;
+		}
+
+		.menu-item-info p {
+			margin-bottom: 10px;
+		}
+
+		.menu-item-price {
+			font-size: 24px;
+			font-weight: bold;
+			margin-top: auto;
+			margin-bottom: 0;
+		}
+
+
+
+		@media (max-width: 876px) {
+			.menu-item {
+				width: calc(50%);
+			}
+
+
+			.hero-text-container h1 {
+				font-size: 32px;
+			}
+
+			.menu-item {
+				width: 45%;
+			}
+		}
+
+		@media (max-width: 560px) {
+			.menu-item {
+				width: calc(50%);
+			}
+
+
+			.hero-text-container h1 {
+				font-size: 32px;
+			}
+
+			.menu-item {
+				width: 100%;
+			}
+		}
+
+		/* main section end */
+
+
+		/* Footer strt */
+		footer {
+			background-color: #997949;
+			color: #fff;
+			padding: 50px 0;
+			font-size: 16px;
+
+		}
+
+		footer h4 {
+			color: #fff;
+			text-align: center;
+			margin-bottom: 20px;
+			margin-top: 15px;
+		}
+
+		footer p {
+			color: #ccc;
+			text-align: center;
+			/* margin-top: 20px; */
+		}
+
+		.footer .social-icons {
+			text-align: center;
+		}
+
+		.social-icons li {
+			display: inline-block;
+			margin-right: 10px;
+
+		}
+
+		.social-icons li:last-child {
+			margin-right: 15px;
+		}
+
+
+		.social-icons a {
+			display: block;
+			width: 30px;
+			height: 30px;
+			background-color: #fff;
+			color: #333;
+			text-align: center;
+			line-height: 30px;
+			border-radius: 50%;
+
+		}
+
+		.social-icons a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+
+		/* footer end */
+	</style>
+
+	<!-- navbar strt -->
+	<header>
+		<nav class="navbar">
+			<div class="navbar-container">
+				<div class="navbar-brand">
+					<a href="#"><img src="/images/logo3.png" alt="Logo"></a>
+				</div>
+				<ul class="navbar-menu">
+					<li class="navbar-item"><a href="index.html">Home</a></li>
+					<li class="navbar-item"><a href="menu.html" class="active">Menu</a></li>
+					<li class="navbar-item"><a href="about.html">About </a></li>
+					<li class="navbar-item"><a href="contact.html">Contact</a></li>
+					<li class="navbar-item"><a href="order.html">Order</a></li>
+					<li class="navbar-item"><a href="registration.html">Registration</a></li>
+					<li class="navbar-item"><a href="login.html">Login</a></li>
+				</ul>
+				<div class="navbar-hamburger">
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+		</nav>
+
+	</header>
+
+	<!-- navbar ens -->
+
+	<!-- container srt -->
+
+	<div class="container">
+		<h1>Welcome to our menu page!</h1>
+
+		<p>[Your Company Name]<br> we offer a wide range of delicious meals that are sure to satisfy your cravings.<br>
+			Our menu is carefully crafted to include a variety of options that cater to different tastes and dietary
+			preferences <br>Thank you for choosing [Your Company Name]. <br>We are proud to offer a diverse and
+			delicious menu that is sure to delight your taste buds.<br> Browse our menu below and place your order
+			today!</p>
+		<button class="orderButton sm-btn">Order Now</button>
+	</div>
+	<div>
+		<h1>Our Menu</h1>
+	</div>
+
+	<!-- container end -->
+
+	<!-- main strt -->
+
+	<!-- biryani -->
+
+	<main>
+		<section>
+			<div class="hero-text-container">
+				<h2>Biryani</h2>
+			</div>
+			<section class="menu">
+
+				<div class="menu-item">
+					<div class="menu-item-img">
+						<img src="images/bn5.jpg" alt="Biryani">
+					</div>
+					<div class="menu-item-info">
+						<h2>Veg Biryani</h2>
+						<p>Aromatic spices, fragrant rice, colorful vegetables, nutritious, loved by all.</p>
+						<p class="menu-item-price">$7.99</p>
+						<div class="order-btn-container">
+							<button class="orderButton sm-btn">Order Now</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="menu-item">
+					<div class="menu-item-img">
+						<img src="/images/bn0.jpg" alt="Biryani">
+					</div>
+					<div class="menu-item-info">
+						<h2>Chicken biryani</h2>
+						<p>Seasoned rice, chicken, spices, herbs, rich flavor, popular dish, gatherings.</p>
+						<p class="menu-item-price">$7.99</p>
+						<div class="order-btn-container">
+							<button class="orderButton sm-btn">Order Now</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="menu-item">
+					<div class="menu-item-img">
+						<img src="images/bn2.jpg" alt="Biryani">
+					</div>
+					<div class="menu-item-info">
+						<h2>Afghani Biryani</h2>
+						<p>Fragrant basmati rice, tender meat, cardamom, cinnamon, cloves, yogurt sauce.</p>
+						<p class="menu-item-price">$7.99</p>
+						<div class="order-btn-container">
+							<button class="orderButton sm-btn">Order Now</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="menu-item">
+					<div class="menu-item-img">
+						<img src="images/bn3.jpg" alt="Biryani">
+					</div>
+					<div class="menu-item-info">
+						<h2>Kashmiri Biryani</h2>
+						<p>Long-grain rice, succulent mutton, saffron, fennel, garnished with nuts, raisins.</p>
+						<p class="menu-item-price">$7.99</p>
+						<div class="order-btn-container">
+							<button class="orderButton sm-btn">Order Now</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="menu-item">
+					<div class="menu-item-img">
+						<img src="images/bn4.jpg" alt="Biryani">
+					</div>
+					<div class="menu-item-info">
+						<h2>Mutton Biryani</h2>
+						<p>Rich, flavorful, succulent mutton, aromatic spices, special occasions, indulgence.</p>
+						<p class="menu-item-price">$7.99</p>
+						<div class="order-btn-container">
+							<button class="orderButton sm-btn">Order Now</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="menu-item">
+					<div class="menu-item-img">
+						<img src="images/bn5.jpg" alt="Biryani">
+					</div>
+					<div class="menu-item-info">
+						<h2>Veg Biryani</h2>
+						<p>Aromatic spices, fragrant rice, colorful vegetables, nutritious, loved by all.</p>
+						<p class="menu-item-price">$7.99</p>
+						<div class="order-btn-container">
+							<button class="orderButton sm-btn">Order Now</button>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- chicken -->
+
+			<section>
+
+
+
+				<div class="hero-text-container">
+
+
+					<!-- checken -->
+
+					<h2>Checken</h2>
+				</div>
+				<section class="menu">
+
+					<div class="menu-item">
+						<div class="menu-item-img">
+							<img src="/images/ck1.jpg" alt="checken">
+						</div>
+						<div class="menu-item-info">
+							<h2>Chicken Karahi</h2>
+							<p>Pakistani spicy chicken curry, made with tomato, ginger, garlic, and green chili.</p>
+							<p class="menu-item-price">$7.99</p>
+							<div class="order-btn-container">
+								<button class="orderButton sm-btn">Order Now</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<div class="menu-item-img">
+							<img src="/images/ck2.jpg" alt="checken">
+						</div>
+						<div class="menu-item-info">
+							<h2>Chicken Biryani</h2>
+							<p>South Asian rice dish with seasoned chicken, spices, herbs, and fragrant basmati rice.
+							</p>
+							<p class="menu-item-price">$7.99</p>
+							<div class="order-btn-container">
+								<button class="orderButton sm-btn">Order Now</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<div class="menu-item-img">
+							<img src="/images/ck3.jpg" alt="checken">
+						</div>
+						<div class="menu-item-info">
+							<h3>Chicken Tikka</h3>
+							<p>Pakistani grilled chicken, marinated in yogurt and spices, tender, juicy, and flavorful.
+							</p>
+							<p class="menu-item-price">$7.99</p>
+							<div class="order-btn-container">
+								<button class="orderButton sm-btn">Order Now</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<div class="menu-item-img">
+							<img src="images/ck4.jpg" alt="checken">
+						</div>
+						<div class="menu-item-info">
+							<h2>Chicken Korma</h2>
+							<p>Mughlai dish, chicken cooked in a rich, creamy sauce with nuts and spices.</p>
+							<p class="menu-item-price">$7.99</p>
+							<div class="order-btn-container">
+								<button class="orderButton sm-btn">Order Now</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<div class="menu-item-img">
+							<img src="images/ck4.jpg" alt="checken">
+						</div>
+						<div class="menu-item-info">
+							<h2>Chicken Korma</h2>
+							<p>Mughlai dish, chicken cooked in a rich, creamy sauce with nuts and spices.</p>
+							<p class="menu-item-price">$7.99</p>
+							<div class="order-btn-container">
+								<button class="orderButton sm-btn">Order Now</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<div class="menu-item-img">
+							<img src="images/ck5.jpg" alt="checken">
+						</div>
+						<div class="menu-item-info">
+							<h2>Chicken Pulao</h2>
+							<p>Pakistani one-pot rice dish with chicken, aromatic spices, and vegetables, flavorful and
+								comforting.</p>
+							<p class="menu-item-price">$7.99</p>
+							<div class="order-btn-container">
+								<button class="orderButton sm-btn">Order Now</button>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+				<!-- Pizza -->
+
+				<section>
+
+					<div class="hero-text-container">
+						<h2>Pizza</h2>
+					</div>
+					<section class="menu">
+
+						<div class="menu-item">
+							<div class="menu-item-img">
+								<img src="/images/pizza1.jpg" alt="Pizza">
+							</div>
+							<div class="menu-item-info">
+								<h2>Margherita Pizza</h2>
+								<p>Tomato sauce, mozzarella cheese, and fresh basil</p>
+								<p class="menu-item-price">$7.99</p>
+								<div class="order-btn-container">
+									<button class="orderButton sm-btn">Order Now</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="menu-item">
+							<div class="menu-item-img">
+								<img src="images/pizza2.jpg" alt="Pizza">
+							</div>
+							<div class="menu-item-info">
+								<h2>Pepperoni Pizza</h2>
+								<p>Tomato sauce, mozzarella cheese, and pepperoni</p>
+								<p class="menu-item-price">$7.99</p>
+								<div class="order-btn-container">
+									<button class="orderButton sm-btn">Order Now</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="menu-item">
+							<div class="menu-item-img">
+								<img src="images/p1.jpg" alt="Pizza">
+							</div>
+							<div class="menu-item-info">
+								<h2>Hawaiian Pizza</h2>
+								<p>Tomato sauce, mozzarella cheese, ham, and pineapple</p>
+								<p class="menu-item-price">$7.99</p>
+								<div class="order-btn-container">
+									<button class="orderButton sm-btn">Order Now</button>
+								</div>
+							</div>
+						</div>
+
+					</section>
+
+
+					<!-- burger -->
+
+					<section>
+
+						<div class="hero-text-container">
+							<h2>Burgers</h2>
+						</div>
+						<section class="menu">
+
+							<div class="menu-item">
+								<div class="menu-item-img">
+									<img src="images/bur1.jpg" alt="Burger">
+								</div>
+								<div class="menu-item-info">
+									<h2>Classic Burger</h2>
+									<p>Beef patty, lettuce, tomato, onion, pickles, and special sauce</p>
+									<p class="menu-item-price">$7.99</p>
+									<div class="order-btn-container">
+										<button class="orderButton sm-btn">Order Now</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-img">
+									<img src="images/burger2.jpg" alt="Burger">
+								</div>
+								<div class="menu-item-info">
+									<h2>Double Cheeseburger</h2>
+									<p>Two beef patties, cheese, lettuce, tomato, onion, pickles, and special sauce</p>
+									<p class="menu-item-price">$7.99</p>
+									<div class="order-btn-container">
+										<button class="orderButton sm-btn">Order Now</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-img">
+									<img src="images/burger3.jpg" alt="Burger">
+								</div>
+								<div class="menu-item-info">
+									<h2>Veggie Burger</h2>
+									<p>Veggie patty, lettuce, tomato, onion, pickles, and special sauce</p>
+									<p class="menu-item-price">$7.99</p>
+									<div class="order-btn-container">
+										<button class="orderButton sm-btn">Order Now</button>
+									</div>
+								</div>
+							</div>
+
+						</section>
+
+						<!-- sushi -->
+
+						<section>
+
+							<div class="hero-text-container">
+								<h2>Sushi</h2>
+							</div>
+							<section class="menu">
+
+								<div class="menu-item">
+									<div class="menu-item-img">
+										<img src="/images/su1.jpg" alt="sushi">
+									</div>
+									<div class="menu-item-info">
+										<h2>California Roll</h2>
+										<p>Sushi rice, seaweed, avocado, crab meat, cucumber, wasabi, soy sauce, ginger,
+											maki roll.</p>
+										<p class="menu-item-price">$7.99</p>
+										<div class="order-btn-container">
+											<button class="orderButton sm-btn">Order Now</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="menu-item">
+									<div class="menu-item-img">
+										<img src="/images/su2.jpg" alt="sushi">
+									</div>
+									<div class="menu-item-info">
+										<h2>Spicy Tuna Roll</h2>
+										<p>Sushi rice, seaweed, spicy tuna, avocado, cucumber, sriracha, wasabi, soy
+											sauce, ginger, maki roll.</p>
+										<p class="menu-item-price">$7.99</p>
+										<div class="order-btn-container">
+											<button class="orderButton sm-btn">Order Now</button>
+										</div>
+									</div>
+								</div>
+								<div class="menu-item">
+									<div class="menu-item-img">
+										<img src="/images/su3.jpg" alt="sushi">
+									</div>
+									<div class="menu-item-info">
+										<h2>Salmon Nigiri</h2>
+										<p>Sushi rice, salmon, wasabi, soy sauce, ginger, hand-pressed, sliced raw fish,
+											seafood, Japanese cuisine.</p>
+										<p class="menu-item-price">$7.99</p>
+										<div class="order-btn-container">
+											<button class="orderButton sm-btn">Order Now</button>
+										</div>
+									</div>
+								</div>
+							</section>
+
+
+							<!-- pasta -->
+
+							<section>
+
+								<div class="hero-text-container">
+									<h2>Pasta</h2>
+								</div>
+								<section class="menu">
+
+									<div class="menu-item">
+										<div class="menu-item-img">
+											<img src="/images/pas1.jpg" alt="pasta">
+										</div>
+										<div class="menu-item-info">
+											<h2>Spaghetti Bolognese</h2>
+											<p>Spaghetti, ground beef, tomato sauce, onions, garlic, herbs, parmesan
+												cheese, comfort food, Italian cuisine.</p>
+											<p class="menu-item-price">$7.99</p>
+											<div class="order-btn-container">
+												<button class="orderButton sm-btn">Order Now</button>
+											</div>
+										</div>
+									</div>
+
+									<div class="menu-item">
+										<div class="menu-item-img">
+											<img src="/images/pas2.jpg" alt="pasta">
+										</div>
+										<div class="menu-item-info">
+											<h2>Fettuccine Alfredo</h2>
+											<p>Fettuccine pasta, butter, heavy cream, parmesan cheese, garlic, black
+												pepper, Italian cuisine.</p>
+											<p class="menu-item-price">$7.99</p>
+											<div class="order-btn-container">
+												<button class="orderButton sm-btn">Order Now</button>
+											</div>
+										</div>
+									</div>
+
+									<div class="menu-item">
+										<div class="menu-item-img">
+											<img src="/images/pas3.jpg" alt="pasta">
+										</div>
+										<div class="menu-item-info">
+											<h2>Penne Arrabiata</h2>
+											<p>Penne pasta, spicy tomato sauce, garlic, chili flakes, olive oil, Italian
+												cuisine, vegetarian-friendly.</p>
+											<p class="menu-item-price">$7.99</p>
+											<div class="order-btn-container">
+												<button class="orderButton sm-btn">Order Now</button>
+											</div>
+										</div>
+									</div>
+
+								</section>
+
+
+								<!-- drinks -->
+
+								<section>
+
+									<div class="hero-text-container">
+										<h2>Drinks</h2>
+									</div>
+									<section class="menu">
+
+										<div class="menu-item">
+											<div class="menu-item-img">
+												<img src="images/c1.jpg" alt="Drink">
+											</div>
+											<div class="menu-item-info">
+												<h2>Coca-Cola</h2>
+												<p>Classic Coke</p>
+												<p class="menu-item-price">$7.99</p>
+												<div class="order-btn-container">
+													<button class="orderButton sm-btn">Order Now</button>
+												</div>
+											</div>
+										</div>
+
+										<div class="menu-item">
+											<div class="menu-item-img">
+												<img src="images/s1.jpg" alt="Drink">
+											</div>
+											<div class="menu-item-info">
+												<h2>Sprite</h>
+													<p>Lemon-lime soda</p>
+													<p class="menu-item-price">$7.99</p>
+													<div class="order-btn-container">
+														<button class="orderButton sm-btn">Order Now</button>
+													</div>
+											</div>
+										</div>
+
+										<div class="menu-item">
+											<div class="menu-item-img">
+												<img src="images/drink3.jpg" alt="Drink">
+											</div>
+											<div class="menu-item-info">
+												<h2>Fanta</h2>
+												<p>Orange soda</p>
+												<p class="menu-item-price">$7.99</p>
+												<div class="order-btn-container">
+													<button class="orderButton sm-btn">Order Now</button>
+												</div>
+											</div>
+										</div>
+
+									</section>
+
+	</main>
+
+	<!-- main end -->
+
+	<!-- footer strt -->
+
+	<footer>
+		<div class="footer">
+			<div class="row">
+				<div class="col-md-4">
+					<h4>About Us</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat enim quis massa sagittis
+						vestibulum. Suspendisse potenti. Nullam euismod purus vel neque tincidunt, non malesuada tortor
+						gravida. </p>
+				</div>
+				<div class="col-md-4">
+					<h4>Contact Us</h4>
+					<p>Pakistan,KPK<br>
+						Swabi,Turlandi<br>
+						Email: Zakaryakhankpk1@gmail.com<br>
+						Phone: (+92) 3161942996</p>
+				</div>
+				<div class="col-md-4">
+					<h4>Follow Us</h4>
+					<ul class="social-icons">
+						<li><a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></i></a></li>
+						<li><a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></i></a></li>
+						<li><a href="https://www.youtube.com"><i class="fa-brands fa-youtube"></i></i></a></li>
+						<li><a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- footer end -->
+
+
+	<script>
+
+		// navbar strt
+
+		const hamburger = document.querySelector(".navbar-hamburger");
+		const menu = document.querySelector(".navbar-menu");
+
+		hamburger.addEventListener("click", function () {
+			menu.classList.toggle("show");
+		});
+
+
+		// js code for footer
+
+
+		const socialIcons = document.querySelectorAll('.social-icons a');
+
+		socialIcons.forEach(icon => {
+			icon.addEventListener('click', e => {
+				e.preventDefault();
+				const href = icon.getAttribute('href');
+				window.open(href, '_blank');
+			});
+		});
+
+		// Get the button element
+		var orderButtons = document.querySelectorAll('.orderButton');
+		for (var i = 0; i < orderButtons.length; i++) {
+			orderButtons[i].addEventListener('click', function () {
+				// Code to handle the click event goes here 
+				window.location.href = 'order.html';
+			});
+		}
+
+
+
+	</script>
+	</body>
+
+</html>

@@ -1,0 +1,391 @@
+{% extends "layout.html" %}
+{% block body %}
+<!-- home section start here  -->
+<section id="home" class="home">
+  <!-- <div class="search">
+      <input type="text" id="searchInput" placeholder="Search departments...">
+      <button id="searchButton">Search</button>
+    </div> -->
+  <div class="image">
+    <img src="{{ url_for('static', filename='image/home.png') }}">
+  </div>
+  <div class="contact">
+    <h1 class="heading"><span>MadiCare</span> Network</h1>
+    <h3>stay safe stay healthy</h3>
+    <p>Welcome to MadiCareNetwork, your online gateway to a personalized and efficient doctor-selection process.
+      We understand that finding the right medical professional can be overwhelming, which is why we've created a
+      user-friendly
+      platform that empowers you to select a specific doctor from a variety of hospital departments with confidence.</p>
+    <a href="{{ url_for('contact') }}" class="btn">ContactUs <span class="fas fa-chevron-right"></span></a>
+
+    <div id="joinus">
+      {% if 'user_id' not in session %}
+      <a href="{{ url_for('signup') }}" class="btn">JoinUs <span class="fas fa-chevron-right"></span></a>
+      <a href="{{ url_for('logout') }}" style="display: none;" class="btn logout">logout <span
+          class="fas fa-chevron-right"></span></a>
+      {% else %}
+      <a href="{{ url_for('signup') }}" style="display: none;" class="btn">JoinUs <span
+          class="fas fa-chevron-right"></span></a>
+      <a href="{{ url_for('logout') }}" class="btn logout">logout <span class="fas fa-chevron-right"></span></a>
+      {% endif %}
+    </div>
+
+
+
+  </div>
+
+  </div>
+</section>
+
+
+<!-- home section ends here  -->
+
+<!-- icon section start here  -->
+
+<section class="icons-container">
+  <div class="icons">
+    <i class="fas fa-user-md">
+      <h3>150+</h3>
+      <p>doctor at work</p>
+    </i>
+  </div>
+
+  <div class="icons">
+    <i class="fas fa-users">
+      <h3>1250+</h3>
+      <p>satisfied patients</p>
+    </i>
+  </div>
+
+  <div class="icons">
+    <i class="fas fa-procedures">
+      <h3>600+</h3>
+      <p>bed facility</p>
+    </i>
+  </div>
+
+  <div class="icons">
+    <i class="fas fa-hospital">
+      <h3>70+</h3>
+      <p>avalable hosprtals</p>
+    </i>
+  </div>
+
+
+
+</section>
+<!-- icon section end here  -->
+
+<!-- services section start here  -->
+
+<section id="services" class="services">
+  <h1 class="heading">our <span>services</span></h1>
+  <div class="box-container">
+
+
+    <div class="box">
+      <i class="fas fa-notes-medical"></i>
+      <h3>free check-up</h3>
+      <p>A "Free Check-Up" offers individuals an opportunity to receive a thorough assessment of their health,
+        well-being,</p>
+      <p id="care1" style="display: none;"> or specific concerns without any associated cost.
+        This service often involves a brief examination by healthcare professionals to identify potential issues, offer
+        advice,
+        and determine if further medical attention is
+        necessary.It's a valuable way to monitor one's health status and address minor health questions
+        promptly.Experience the epitome of
+        care with our platform's FREE CHECK-UP
+        because your health deserves nothing but the best.</p>
+      <a id="care1" class="btn" onclick="toggle1()">learn-more<span class="fas fa-chevron-right"></span></a>
+    </div>
+
+    <div class="box">
+      <i class="fas fa-ambulance"></i>
+      <h3>24/7 ambulance</h3>
+      <p>Experience peace of mind with our 24/7 Ambulance Service, seamlessly integrated into the Madicare Network
+        platform.</p>
+      <p id="care2" style="display: none;"> Whether it's day or night, our dedicated ambulance team is just a tap away,
+        ready to provide swift
+        and professional medical assistance whenever you need it. Rest assured knowing that urgent medical situations
+        are met with rapid response and expert care,
+        ensuring you receive the right attention at the right time. With our reliable and efficient ambulance service,
+        your well-being is our top priority, always connected through the power of Madicare.</p>
+      <a id="care2" class="btn" onclick="toggle2()">learn-more<span class="fas fa-chevron-right"></span></a>
+    </div>
+
+    <div class="box">
+      <i class="fas fa-user-md"></i>
+      <h3>expert-doctors</h3>
+      <p>Discover unparalleled healthcare with Madicare Network's roster of Expert Doctors.</p>
+      <p id="care3" style="display: none;">Madicare ensures that top-tier medical expertise is just a click or a call
+        away.
+        Your journey to optimal health begins with the Expert Doctors of Madicare Network,
+        dedicated to your well-being and peace of mind.Whether you seek a second opinion, specialized treatment, or
+        general medical advice,
+        our Expert Doctors are here to provide personalized solutions tailored to your unique needs.</p>
+      <a id="care3" class="btn" onclick="toggle3()">learn-more<span class="fas fa-chevron-right"></span></a>
+    </div>
+
+    <div class="box">
+      <i class="fas fa-pills"></i>
+      <h3>medicines</h3>
+      <p>Experience convenience and confidence in managing your health with Madicare Network's comprehensive Medicines
+        service. </p>
+      <p id="care4" style="display: none;"> Our platform offers a user-friendly interface that allows you to
+        effortlessly order your prescribed medications online,
+        ensuring a hassle-free and timely delivery to your doorstep.Your health is our priority, and Madicare's
+        Medicines service reflects our dedication to your
+        convenience and peace of mind. Your health is our priority, and Madicare's Medicines service reflects our
+        dedication to your convenience and peace of mind.</p>
+      <a id="care4" class="btn" onclick="toggle4()">learn-more<span class="fas fa-chevron-right"></span></a>
+    </div>
+
+    <div class="box">
+      <i class="fas fa-procedures"></i>
+      <h3>bed-facility</h3>
+      <p>Experience comfort and care like never before with Madicare Network's exceptional Bed Facility service.</p>
+      <p id="care5" style="display: none;"> Our platform offers a streamlined and convenient way to secure hospital beds
+        and accommodations when you need them most.
+        Navigating the complexities of hospital admissions can be daunting, but with Madicare, you can easily reserve a
+        bed online,
+        whether it's for planned procedures or unexpected medical needs. Our extensive network of partner hospitals
+        ensures that you have access to quality
+        healthcare facilities that prioritize your well-being.</p>
+      <a id="care5" class="btn" onclick="toggle5()">learn-more<span class="fas fa-chevron-right"></span></a>
+    </div>
+
+    <div class="box">
+      <i class="fas fa-heartbeat"></i>
+      <h3>total care</h3>
+      <p>Discover the pinnacle of comprehensive healthcare with "Total Care" on our MadiCareNetwork.</p>
+      <p id="care6" style="display: none;">Total Care means you're never alone on your health journey. Our platform
+        offers a supportive community, access to
+        educational resources, and the assurance that your health is our top priority. Experience the future of
+        healthcare where every detail is considered,
+        and your well-being is nurtured through a comprehensive and compassionate approach.
+        Welcome to Total Care on our platform – your partner in health, every step of the way.</p>
+      <a id="care6" class="btn" onclick="toggle6()">learn-more<span class="fas fa-chevron-right"></span></a>
+    </div>
+
+
+
+
+  </div>
+</section>
+
+
+<!-- services section end here  -->
+
+<!--  about section start here  -->
+
+
+<section id="about" class="about">
+  <h1 class="heading"><span>about</span> us</h1>
+
+  <div class="row">
+
+    <div class="image">
+      <img src="{{ url_for('static', filename='image/about.png') }}">
+      <!-- <img src="/image/about.png" alt=""> -->
+      <!-- <img src="image/about.png" alt=""> -->
+    </div>
+
+    <div class="contact">
+      <h3>we are take care of your healthy life</h3>
+      <p>Imagine a platform where you can effortlessly explore and choose from a diverse range of expert doctors across
+        various hospital
+        departments. Whether you seek a compassionate pediatrician, a cutting-edge neurologist,
+        or a skilled surgeon, Madicare Network empowers you to make decisions aligned with your health needs and
+        preferences.</p>
+      <p id="pera" style="display: none;">Gone are the days of uncertainty and confusion. Our intuitive interface and
+        detailed doctor profiles provide you with a
+        comprehensive view of each specialist's expertise, experience, and patient reviews. This transparency ensures
+        that you're not just selecting a doctor
+        you're finding the perfect partner on your health journey.
+        Your well-being deserves the best, and with Madicare Network, you're stepping into a realm where choosing a
+        doctor is an experience of empowerment.
+        Join us in revolutionizing healthcare choices
+        because the path to better health should always be in your hands.</p>
+      <a id="btn" class="btn" onclick="toggleHide()">learn-more<span class="fas fa-chevron-right"></span></a>
+    </div>
+  </div>
+
+
+  </div>
+</section>
+
+
+
+<!--  about section end here  -->
+
+
+<!-- department section start here ============================================================================= -->
+
+
+
+
+
+<!-- dep section end here  ============================================================================-->
+
+
+<!-- booking section start here ============================================================== -->
+
+
+
+
+<!-- review section start here  -->
+
+<section id="review" class="review">
+  <h1 class="heading">clint's <span>review</span></h1>
+
+  <div class="box-container">
+
+    <div class="box">
+
+      <img src="{{ url_for('static', filename='image/doctor1.png') }}">
+      <h3>Mark S</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+      <p class="text">"Madicare Network is a game-changer! As someone who recently moved to a new city, finding reliable
+        healthcare was a top concern.
+        Thanks to this platform, I could explore doctors from various departments and read about their background and
+        patient experiences.
+        I needed a dermatologist, and within minutes, I found an excellent one nearby.
+        The platform's efficiency and user-friendly design deserve all the praise. A strong 4.5-star rating, no doubt!"
+        - Mark S.</p>
+
+    </div>
+
+    <div class="box">
+      <img src="{{ url_for('static', filename='image/doctor2.png') }}">
+      <h3>Sarah T</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+      <p class="text">"I've been using Madicare Network for a few months now, and I am beyond impressed. The platform's
+        seamless interface made it
+        incredibly easy for me to find a specialist in gastroenterology. The doctor I chose was not only highly
+        experienced but also very approachable.
+        The ability to read patient reviews helped me make an informed decision.
+        I appreciate how Madicare has simplified the process of finding the right doctor. A solid 4.5 stars from me!" -
+        Sarah T.</p>
+
+    </div>
+
+    <div class="box">
+      <img src="{{ url_for('static', filename='image/doctor3.png') }}">
+      <h3> Emily L</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+      <p class="text">"I'm thoroughly impressed with Madicare Network. It's like having a personal healthcare assistant
+        at your fingertips.
+        I required a cardiologist due to a family history of heart issues, and the platform made the process incredibly
+        smooth. The doctor
+        I selected was not only knowledgeable but also took the time to address my concerns. Plus, the option to book
+        appointments online is a
+        huge convenience. A definite 4.5 stars
+        this platform truly puts patients first!" - Emily L.</p>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- review section end here  -->
+
+
+
+
+
+
+
+<!-- blogs section starts here  -->
+<section class="blogs" id="blogs">
+  <h1 class="heading">our <span>blogs</span></h1>
+
+  <div class="box-container">
+
+    <div class="box">
+ 
+     
+      <div class="content">
+        <div class="icon">
+          <a href="#"><i class="fas fa-calendar"></i>1st may, wnsday</a>
+          <a href="#"><i class="fas fa-user"></i>by admin</a>
+        </div>
+        <h3>Navigating Pediatric Care: Expert Tips for Your Little Ones</h3>
+        <p>Empowering parents with insights from top pediatricians for effective child healthcare.</p>
+        <p id="hideme" style="display: none;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, quas
+          magnam!
+          Id corporis error omnis sed
+          quisquam aliquid sunt. Accusantiuml.
+          officia ad dolore. At aperiam, voluptatem culpa harum sunt quo ipsa eos! Dolorem assumenda, nihil ducimus
+          nesciunt esse perferendis possimus numquam! Ducimus ad ab veniam in, labore non sapiente perspiciatis deserunt
+          vel ipsa provident voluptas facere obcaecati quidem voluptatum quae tenetur, sed mollitia vero laudantium!
+          Voluptas dolor quia animi tenetur architecto praesentium!</p>
+        <a href="{{ url_for('blogs') }}" class="btn">explore-more<span class="fas fa-chevron-right"></span></a>
+
+      </div>
+    </div>
+
+    <div class="box">
+      <!-- <div class="image">
+        <img src="{{ url_for('static', filename='image/dep-image/gettyimages-1402122896-2048x2048.webp') }}">
+      </div> -->
+      <div class="content">
+        <div class="icon">
+          <a href="#"><i class="fas fa-calendar"></i>1st may, wnsday</a>
+          <a href="#"><i class="fas fa-user"></i>by admin</a>
+        </div>
+        <h3>Mind Matters: Unveiling the Link Between Mental Health and Well-Being</h3>
+        <p> Exploring the critical connection between mental health and overall wellness, with advice from leading psychologists.</p>
+        <a href="{{ url_for('blogs') }}" class="btn">explore-more<span class="fas fa-chevron-right"></span></a>
+
+      </div>
+    </div>
+
+    <div class="box">
+      <!-- <div class="image">
+        <img src="{{ url_for('static', filename='image/dep-image/radiology.jpeg') }}">
+      </div> -->
+      <div class="content">
+        <div class="icon">
+          <a href="#"><i class="fas fa-calendar"></i>1st may, wnsday</a>
+          <a href="#"><i class="fas fa-user"></i>by admin</a>
+        </div>
+        <h3>Aging Gracefully: Your Comprehensive Guide to Senior Health</h3>
+        <p> Insights from geriatric specialists on promoting health and vitality as we age, fostering a fulfilling and active senior lifestyle.
+        </p>
+        <a href="{{ url_for('blogs') }}" class="btn">explore-more<span class="fas fa-chevron-right"></span></a>
+
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+</section>
+{% endblock %}
+
+
+<!-- blogs section end here  -->

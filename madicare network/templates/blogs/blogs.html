@@ -1,0 +1,103 @@
+<style>
+
+</style>
+
+
+{% extends "layout.html" %}
+{% block body %}
+
+<section class="blogs" id="blogs">
+  <h1 class="heading">our <span>blogs</span></h1>
+
+  <div class="box-container">
+
+    <div class="box">
+      <div class="image">
+        <img src="{{ url_for('static', filename='image/dep-image/urology.jpeg') }}">
+      </div>
+
+      <div class="content">
+        <div class="icon">
+          <a href="#"><i class="fas fa-calendar"></i>1st may, wnsday</a>
+          <a href="#"><i class="fas fa-user"></i>by admin</a>
+        </div>
+        <h3>Navigating Pediatric Care: Expert Tips for Your Little Ones </h3>
+        <p>
+          In this blog, you could cover a range of topics related to children's health, including:</p>
+        <p id="hideme" style="display: none;">
+          The importance of regular pediatric check-ups and vaccinations.
+          Tips for maintaining a balanced diet for kids.
+          Common childhood illnesses and how to manage them.
+          Recognizing developmental milestones and potential concerns.
+          Advice on ensuring a safe home environment for children.
+          Strategies for dealing with picky eaters and fostering healthy eating habits.
+          Addressing common parenting concerns, such as sleep issues and behavior challenges.
+          Insights into the role of physical activity in children's growth and well-being.
+          How to choose the right pediatrician for your family.</p>
+        <a id="hideme" class="btn" onclick="hideme()">explore-more<span class="fas fa-chevron-right"></span></a>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="image">
+
+        <img src="{{ url_for('static', filename='image/dep-image/gettyimages-1402122896-2048x2048.webp') }}">
+
+      </div>
+      <div class="content">
+        <div class="icon">
+          <a href="#"><i class="fas fa-calendar"></i>1st may, wnsday</a>
+          <a href="#"><i class="fas fa-user"></i>by admin</a>
+        </div>
+        <h3>Mind Matters: Unveiling the Link Between Mental Health and Well-Being </h3>
+        <p>
+          In this blog, you could cover a range of topics related to children's health, including:</p>
+        <p id="hideme1" style="display: none;">
+          Exploring the significance of mental health in overall well-being.
+          Understanding different mental health conditions and their symptoms.
+          Strategies for managing stress and promoting mental resilience.
+          Breaking down the stigma surrounding mental health issues.
+          The connection between physical health and mental well-being.
+          Techniques for practicing mindfulness and maintaining a healthy mindset.
+          The role of professional therapy and counseling in mental health support.
+          Tips for maintaining work-life balance and preventing burnout.
+          How to support friends and family members who may be struggling with mental health challenges.</p>
+        <a id="hideme1" class="btn" onclick="hideme1()">explore-more<span class="fas fa-chevron-right"></span></a>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="image">
+
+        <img src="{{ url_for('static', filename='image/dep-image/radiology.jpeg') }}">
+      </div>
+      <div class="content">
+        <div class="icon">
+          <a href="#"><i class="fas fa-calendar"></i>1st may, wnsday</a>
+          <a href="#"><i class="fas fa-user"></i>by admin</a>
+        </div>
+        <h3>Aging Gracefully: Your Comprehensive Guide to Senior Health </h3>
+        <p>
+          In this blog, you could cover a range of topics related to children's health, including:</p>
+        <p id="hideme2" style="display: none;">
+          The importance of regular health screenings and preventive care for seniors.
+          Strategies for maintaining mobility and preventing falls.
+          Nutritional needs and dietary considerations for older adults.
+          Addressing common health issues that affect seniors, such as arthritis and osteoporosis.
+          The role of social engagement and community involvement in healthy aging.
+          Tips for managing chronic conditions and medications.
+          Maintaining cognitive health through brain-stimulating activities.
+          Staying physically active in later years and adapting exercises for seniors.
+          Creating a supportive and age-friendly living environment for seniors.</p>
+          <a id="hideme2" class="btn" onclick="hideme2()">explore-more<span class="fas fa-chevron-right"></span></a>
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+</section>
+{% endblock %}

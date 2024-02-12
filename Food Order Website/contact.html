@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Contact Us</title>
+    <style>
+
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* navbar strt */
+
+        nav  {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: #ff9800;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+        }
+
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 30px;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            border-radius: 60%;
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+
+        .navbar-item {
+            margin-right: 20px;
+        }
+
+        .navbar-item a {
+            color: whitesmoke;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .navbar-item a:hover {
+            color: #ff4455;
+        }
+
+        .navbar-hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .navbar-hamburger div {
+            width: 25px;
+            height: 2px;
+            margin: 3px;
+            background-color: #333;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a.active {
+            /* background-color: #723b3b; */
+            color: aqua;
+        }
+
+
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 100%;
+                padding: 10px;
+                box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+                background-color: #ff9800;
+                z-index: 99;
+            }
+
+            .navbar-menu.show {
+                display: flex;
+                flex-direction: column;
+                margin-top: 18px;
+            }
+
+            .navbar-item {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .navbar-hamburger {
+                display: block;
+            }
+
+            .active-menu .navbar-hamburger div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .active-menu .navbar-hamburger div:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .active-menu .navbar-hamburger div:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+
+
+        /* navbar end */
+
+            /* container strt */
+
+    .container {
+      background-color: #ff4500;
+      height: 450px;
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      margin-top: -110px;
+      position: relative;
+      background: url("/images/bg0.jpg") no-repeat center center fixed;
+      background-size: cover
+    }
+
+
+    .container h1 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      padding-top: 90px;
+      color: rgb(7, 233, 158);
+      margin-top: 180px;
+
+    }
+
+    .container p {
+      color: white;
+    }
+
+    @media only screen and (max-width: 600px) {
+			h1 {
+				font-size: 24px;
+			}
+
+			p {
+				font-size: 16px;
+			}
+
+			button.sm-btn {
+				padding: 8px 16px;
+				font-size: 14px;
+			}
+		}
+
+@media (max-width: 768px) {
+    .container {
+        height: auto;
+        padding: 50px 20px;
+       
+    }
+
+    .container h1 {
+        font-size: 36px;
+        padding-top: 0;
+    }
+
+    .container p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        height: auto;
+        padding: 50px 20px;
+    }
+
+    .container h1 {
+        font-size: 28px;
+    }
+
+    .container p {
+        font-size: 14px;
+    }
+
+    .container button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+    /* container end */
+
+    
+       
+
+       /* Style for the main content area */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 70px;
+  margin-top: 80px;
+  text-align: center;
+ 
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: #008000;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #006400;
+}
+
+
+
+/* Media Queries for responsiveness */
+@media only screen and (max-width: 600px) {
+  main {
+    padding: 10px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    font-size: 0.9rem;
+  }
+  
+  button[type="submit"] {
+    font-size: 1rem;
+  }
+}
+
+/* main end */
+
+        /* Footer */
+        footer {
+  background-color: #997949;
+  color: #fff;
+  padding: 50px 0;
+  font-size: 16px;
+  
+}
+
+footer h4 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+footer p {
+  color: #ccc;
+  text-align: center;
+  /* margin-top: 20px; */
+}
+.footer .social-icons {
+  text-align: center;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-right: 10px;
+  
+}
+
+.social-icons li:last-child {
+  margin-right: 15px;
+}
+
+
+.social-icons a {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+  
+}
+
+.social-icons a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* footer end */
+        
+    </style>
+  </head>
+  <body>
+
+    <!-- navbar strt -->
+
+    <nav class="navbar">
+      <div class="navbar-container">
+          <div class="navbar-brand">
+              <a href="#"><img src="/images/logo4.png" alt="Logo"></a>
+          </div>
+          <ul class="navbar-menu">
+              <li class="navbar-item"><a href="index.html">Home</a></li>
+              <li class="navbar-item"><a href="menu.html">Menu</a></li>
+              <li class="navbar-item"><a href="about.html">About</a></li>
+              <li class="navbar-item"><a href="contact.html"class="active">Contact</a></li>
+              <li class="navbar-item"><a href="order.html">Order</a></li>
+
+              <li class="navbar-item"><a href="about.html">Registration </a></li>
+              <li class="navbar-item"><a href="login.html">Login</a></li>
+          </ul>
+          <div class="navbar-hamburger">
+              <div></div>
+              <div></div>
+              <div></div>
+          </div>
+      </div>
+  </nav>
+
+  <!-- navbar end -->
+
+  <!-- container strt -->
+
+  <div class="container">
+    <h1>Welcome to our contact page!</h1>
+    <p> We're excited to hear from you and answer any questions you may have about our food order website.
+      <br>
+      If you have a question about placing an order, please visit our FAQ page first. If you still need assistance, please don't hesitate to contact us using the form below. We'll get back to you as soon as possible.
+      <br>
+      Thank you for visiting our website and we look forward to hearing from you!
+    </p>
+
+  </div>
+
+<!-- main strt -->
+
+    <main>
+      <h1>Contact Us</h1>
+      <p>Please fill out the form below to reach out to us.</p>
+      <form>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div>
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+        <div>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+
+<!-- main end -->
+
+<!-- footer strt -->
+
+    <footer>
+      <div class="footer">
+        <div class="row">
+          <div class="col-md-4">
+            <h4>About Us</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat enim quis massa sagittis vestibulum. Suspendisse potenti. Nullam euismod purus vel neque tincidunt, non malesuada tortor gravida. </p>
+          </div>
+          <div class="col-md-4">
+            <h4>Contact Us</h4>
+            <p>Pakistan,KPK<br>
+            Swabi,Turlandi<br>
+            Email: Zakaryakhankpk1@gmail.com<br>
+            Phone: (+92) 3161942996</p>
+          </div>
+          <div class="col-md-4">
+            <h4>Follow Us</h4>
+            <ul class="social-icons">
+              <li><a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></i></a></li>
+              <li><a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></i></a></li>
+              <li><a href="https://www.youtube.com"><i class="fa-brands fa-youtube"></i></i></a></li>
+              <li><a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- footer end -->
+
+
+    
+    <script>
+
+      // navbar strt
+
+const navbarMenu = document.querySelector(".navbar-menu");
+const navbarHamburger = document.querySelector(".navbar-hamburger");
+
+navbarHamburger.addEventListener("click", () => {
+  navbarMenu.classList.toggle("show");
+  navbarHamburger.classList.toggle("active-menu");
+});
+
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > navbar.offsetHeight + 150) {
+    navbar.classList.add("sticky");
+  } else {
+    navbar.classList.remove("sticky");
+  }
+});
+
+
+ // js code for footer
+
+        
+ const socialIcons = document.querySelectorAll('.social-icons a');
+
+socialIcons.forEach(icon => {
+  icon.addEventListener('click', e => {
+    e.preventDefault();
+    const href = icon.getAttribute('href');
+    window.open(href, '_blank');
+  });
+});
+
+
+    </script>
+  </body>
+</html>

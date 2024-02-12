@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Food Order Website</title>
+  <style>
+    /* Global styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background-color: #ff9800;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+      z-index: 100;
+    }
+
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 30px;
+    }
+
+    .navbar-brand img {
+      height: 50px;
+      border-radius: 60%;
+    }
+
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      list-style: none;
+    }
+
+    .navbar-item {
+      margin-right: 20px;
+    }
+
+    .navbar-item a {
+      color: whitesmoke;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+
+    .navbar-item a:hover {
+      color: #ff4455;
+    }
+
+    .navbar-hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .navbar-hamburger div {
+      width: 25px;
+      height: 2px;
+      margin: 3px;
+      background-color: #333;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a.active {
+      /* background-color: #723b3b; */
+      color: aqua;
+    }
+
+
+
+    @media (max-width: 768px) {
+      .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        background-color: #ff9800;
+        z-index: 99;
+      }
+
+      .navbar-menu.show {
+        display: flex;
+        flex-direction: column;
+        margin-top: 18px;
+      }
+
+      .navbar-item {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .navbar-hamburger {
+        display: block;
+      }
+
+      .active-menu .navbar-hamburger div:nth-child(2) {
+        opacity: 0;
+      }
+
+      .active-menu .navbar-hamburger div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .active-menu .navbar-hamburger div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .logo a {
+      color: #ff9000;
+      text-decoration: none;
+    }
+
+    /* Login styles */
+    .login {
+      background-color: #f7f7f7;
+      padding: 80px 0;
+      margin-top: 80px;
+    }
+
+    .login h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 10px;
+    }
+
+    button[type="submit"] {
+      background-color: #ff9000;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #ffad33;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .register-link a {
+      color: #ff9000;
+      text-decoration: none;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-brand">
+          <a href="#"><img src="/images/logo1.png" alt="Logo"></a>
+        </div>
+        <ul class="navbar-menu">
+          <li class="navbar-item"><a href="index.html" >Home</a></li>
+          <li class="navbar-item"><a href="menu.html">Menu</a></li>
+          <li class="navbar-item"><a href="about.html">About </a></li>
+          <li class="navbar-item"><a href="contact.html">Contact</a></li>
+          <li class="navbar-item"><a href="order.html">Order</a></li>
+          <li class="navbar-item"><a href="registration.html">Registration</a></li>
+          <li class="navbar-item"><a href="login.html" class="active">Login</a></li>
+          <li class="navbar-item">
+            <a href="#" id="logout-btn" style="display: none;">Logout</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#" id="logout-btn" style="display: none;">Logout</a>
+          </li>
+        </ul>
+        <div class="navbar-hamburger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+
+  <!-- Login Section -->
+  <section class="login">
+    <div class="container">
+      <h2>Login to your account</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn">Login</button>
+        </div>
+        <p class="register-link">Don't have an account? <a href="registration.html">Register here</a></p>
+      </form>
+      
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Food Order. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+
+    // hamburger code
+    const navbarMenu = document.querySelector(".navbar-menu");
+    const navbarHamburger = document.querySelector(".navbar-hamburger");
+
+    navbarHamburger.addEventListener("click", () => {
+      navbarMenu.classList.toggle("show");
+      navbarHamburger.classList.toggle("active-menu");
+    });
+
+
+
+
+    // Select the form and input fields
+  const form = document.querySelector('#login-form');
+  const emailInput = form.querySelector('#email');
+  const passwordInput = form.querySelector('#password');
+
+  // Add event listener to form submission
+  form.addEventListener('submit', (event) => {
+    event.preventDefault(); // prevent default form submission behavior
+
+    // Perform validation
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    // Check if email is valid
+    const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    // Check if password is at least 6 characters long
+    if (password.length < 6) {
+      alert('Password must be at least 6 characters long.');
+      return;
+    }
+
+    // If validation passes, submit the form
+    form.submit();
+  });
+
+  </script>
+</body>
+
+</html>

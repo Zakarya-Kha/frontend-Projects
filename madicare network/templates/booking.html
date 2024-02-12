@@ -1,0 +1,35 @@
+
+
+{% extends "layout.html" %}
+{% block body %}
+
+<section id="book" class="book">
+
+    <h1 class="heading">book <span>now</span></h1>
+
+    <div class="row">
+
+      <div class="image">
+         
+        <img src="{{ url_for('static', filename='image/3dr.png') }}">
+      </div>
+
+      <form action="/booking" method="post">
+        <h3>book appointment</h3>
+        
+        <input type="text" placeholder="your name" class="box" name="name">
+        <input type="text" placeholder="your doctor name" class="box"  name="doctor">
+        <input type="number" placeholder="your number" class="box"  name="number">
+        <input type="email" placeholder="your email" class="box"  name="email">
+        <input type="text" placeholder="your address" class="box"  name="address">
+        <input type="text" placeholder="enter your problem" class="box" size="30"  name="problem">
+    
+        <!-- <input type="date" class="box" > -->
+        <input type="submit" value="book now" class="btn">
+      </form>
+    </div>
+  </section>
+
+
+  {% endblock %}
+  <!-- booking section end here  -->

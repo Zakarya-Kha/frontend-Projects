@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>food order website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+            background-color: #f2f2f2;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: #ff9800;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+        }
+
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 30px;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            border-radius: 60%;
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+
+        .navbar-item {
+            margin-right: 20px;
+        }
+
+        .navbar-item a {
+            color: whitesmoke;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .navbar-item a:hover {
+            color: #ff4455;
+        }
+
+        .navbar-hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .navbar-hamburger div {
+            width: 25px;
+            height: 2px;
+            margin: 3px;
+            background-color: #333;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a.active {
+            /* background-color: #723b3b; */
+            color: aqua;
+        }
+
+
+
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 100%;
+                padding: 10px;
+                box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+                background-color: #ff9800;
+                z-index: 99;
+            }
+
+            .navbar-menu.show {
+                display: flex;
+                flex-direction: column;
+                margin-top: 18px;
+            }
+
+            .navbar-item {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .navbar-hamburger {
+                display: block;
+            }
+
+            .active-menu .navbar-hamburger div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .active-menu .navbar-hamburger div:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .active-menu .navbar-hamburger div:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+
+
+        /* .container {
+    height: 400px;
+    width: 600px;
+    position: relative;
+    background: url("/images/back.jpg") no-repeat center center fixed;
+    background-size: cover;
+} */
+
+
+        .container {
+            height: 450px;
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            margin-top: 75px;
+            background: url("/images/b9.jpg") no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: rgb(7, 233, 158);
+            margin-bottom: 20px;
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        button.sm-btn {
+            background-color: rgb(77, 197, 157);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button.sm-btn:hover {
+            background-color: #F44336;
+        }
+
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            button.sm-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                height: auto;
+                padding: 50px 20px;
+
+            }
+
+            .container h1 {
+                font-size: 36px;
+                padding-top: 0;
+            }
+
+            .container p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                height: auto;
+                padding: 50px 20px;
+            }
+
+            .container h1 {
+                font-size: 28px;
+            }
+
+            .container p {
+                font-size: 14px;
+            }
+
+            .container button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+
+
+
+        main {
+            padding: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+      
+
+
+
+        /* Footer */
+        footer {
+            background-color: #997949;
+            color: #fff;
+            padding: 50px 0;
+            font-size: 16px;
+
+        }
+
+        footer h4 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 15px;
+        }
+
+        footer p {
+            color: #ccc;
+            text-align: center;
+            /* margin-top: 20px; */
+        }
+
+        .footer .social-icons {
+            text-align: center;
+        }
+
+        .social-icons li {
+            display: inline-block;
+            margin-right: 10px;
+
+        }
+
+        .social-icons li:last-child {
+            margin-right: 15px;
+        }
+
+
+        .social-icons a {
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            color: #333;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+
+        }
+
+        .social-icons a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+        <header>
+            <nav class="navbar">
+                <div class="navbar-container">
+                    <div class="navbar-brand">
+                        <a href="#"><img src="/images/logo1.png" alt="Logo"></a>
+                    </div>
+                    <ul class="navbar-menu">
+                        <li class="navbar-item"><a href="index.html" class="active">Home</a></li>
+                        <li class="navbar-item"><a href="menu.html">Menu</a></li>
+                        <li class="navbar-item"><a href="about.html">About </a></li>
+                        <li class="navbar-item"><a href="contact.html">Contact</a></li>
+                        <li class="navbar-item"><a href="order.html">Order</a></li>
+                        <li class="navbar-item"><a href="registration.html">Registration</a></li>
+                        <li class="navbar-item"><a href="login.html">Login</a></li>
+                    </ul>
+                    <div class="navbar-hamburger">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+
+        <div class="container">
+            <h1>Welcome to Food Order Website!</h1>
+            <p>Discover delicious meals from your favorite local restaurants, all in one place. With our easy-to-use
+                platform, you can browse menus, order online, and have your food delivered straight to your
+                doorstep.<br>Whether you're craving pizza, sushi, burgers, or something else entirely, we've got you
+                covered. Our restaurant partners offer a wide range of cuisines and dishes, so there's something for
+                everyone.<br>Plus, our user-friendly website makes it easy to search for restaurants, place orders, and
+                track your delivery in real-time.
+            </p>
+            <button class="orderButton sm-btn">Order Now</button>
+        </div>
+        <main>
+            <section>
+                <h2>Our Menu</h2>
+                <p>Check out our delicious menu and place your order today!</p>
+                <button id="view-menu-button">View Menu</button>
+
+            </section>
+            <section>
+                <h2>About Us</h2>
+                <p>Learn more about our restaurant and the people behind it.</p>
+                <button id="learn-more-button">Learn More</button>
+
+            </section>
+            <section>
+                <h2>Contact Us</h2>
+                <p>Get in touch with us if you have any questions or concerns.</p>
+                <button id="contact-us-button">Contact Us</button>
+
+            </section>
+        </main>
+        <footer>
+            <div class="footer">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>About Us</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat enim quis massa
+                            sagittis vestibulum. Suspendisse potenti. Nullam euismod purus vel neque tincidunt, non
+                            malesuada tortor gravida. </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Contact Us</h4>
+                        <p>Pakistan,KPK<br>
+                            Swabi,Turlandi<br>
+                            Email: Zakaryakhankpk1@gmail.com<br>
+                            Phone: (+92) 3161942996</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Follow Us</h4>
+                        <ul class="social-icons">
+                            <li><a href="https://www.facebook.com"><i class="fa-brands fa-facebook"></i></i></a></li>
+                            <li><a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></i></a></li>
+                            <li><a href="https://www.youtube.com"><i class="fa-brands fa-youtube"></i></i></a></li>
+                            <li><a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+    
+
+
+
+
+    <script>
+        // hamburger code
+        const navbarMenu = document.querySelector(".navbar-menu");
+        const navbarHamburger = document.querySelector(".navbar-hamburger");
+
+        navbarHamburger.addEventListener("click", () => {
+            navbarMenu.classList.toggle("show");
+            navbarHamburger.classList.toggle("active-menu");
+        });
+
+        window.addEventListener("scroll", () => {
+            const navbar = document.querySelector(".navbar");
+            if (window.scrollY > navbar.offsetHeight + 150) {
+                navbar.classList.add("sticky");
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        });
+
+
+        // Get the button element
+        var orderButtons = document.querySelectorAll('.orderButton');
+        for (var i = 0; i < orderButtons.length; i++) {
+            orderButtons[i].addEventListener('click', function () {
+                // Code to handle the click event goes here 
+                window.location.href = 'menu.html';
+            });
+        }
+        // view button
+        var viewMenuButton = document.getElementById("view-menu-button");
+
+        viewMenuButton.addEventListener("click", function () {
+            window.location.href = "menu.html";
+        });
+
+        // learn more button
+        var learnMoreButton = document.getElementById("learn-more-button");
+
+        learnMoreButton.addEventListener("click", function () {
+            window.location.href = "about.html";
+        });
+
+        // contact us button
+        var contactUsButton = document.getElementById("contact-us-button");
+
+        contactUsButton.addEventListener("click", function () {
+            window.location.href = "contact.html";
+        });
+
+
+        // Code to change section background color on hover
+        let sections = document.querySelectorAll('main section');
+        sections.forEach(function (section) {
+            section.addEventListener('mouseenter', function () {
+                section.style.backgroundColor = "#f2f2f2";
+            });
+            section.addEventListener('mouseleave', function () {
+                section.style.backgroundColor = "#fff";
+            });
+        });
+
+        // js code for footer
+
+
+        const socialIcons = document.querySelectorAll('.social-icons a');
+
+        socialIcons.forEach(icon => {
+            icon.addEventListener('click', e => {
+                e.preventDefault();
+                const href = icon.getAttribute('href');
+                window.open(href, '_blank');
+            });
+        });
+
+    </script>
+</body>
+
+</html>
